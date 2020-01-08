@@ -9,13 +9,11 @@ from flask_basicauth import BasicAuth
 import telia
 
 app = Flask(__name__)
-app.config["BASIC_AUTH_USERNAME"] = os.environ.get("BASIC_AUTH_USERNAME")
-app.config["BASIC_AUTH_PASSWORD"] = os.environ.get("BASIC_AUTH_PASSWORD")
-app.config["TELIA_CONFIG"] = os.environ.get("TELIA_CONFIG")
+app.config.from_object("config")
 basic_auth = BasicAuth(app)
 
 def send_sms(message, contact):
-    api = telia.TeliaAPI(app.config["TELIA_CONFIG"])
+    api = telia.TeliaAPI(app.config["TELIA_USERNAME"], app.config["TELIA_PASSWORD"])
     api.send_sms(message, [contact])
     api.session.close()
 
