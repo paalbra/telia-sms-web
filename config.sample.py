@@ -1,4 +1,3 @@
-BASIC_AUTH_USERNAME = "bob"
-BASIC_AUTH_PASSWORD = "alice4life"
+AUTH_KEY = "somethinglongandsecret"
 TELIA_USERNAME = "12345678"
 TELIA_PASSWORD = "secret"
